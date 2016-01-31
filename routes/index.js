@@ -30,4 +30,27 @@ router.get('/', (req, res, next) => {
   })
 })
 
+router.get('/test', (req, res, next) => {
+  apiRequest({
+    uri: `/graphql`,
+    qs: {
+      query: `{
+        articles {
+          id
+          title
+          createdBy {
+            id
+          }
+          comments {
+            content
+          }
+        }
+      }`
+    }
+  }, (err, response, body) => {
+    if (err) return next(err)
+    res.json(body)
+  })
+})
+
 module.exports = router

@@ -15,10 +15,16 @@ block content
   .meta
     p 
       = "created by: "
-      a(href="/users/"+article.createdBy.username)= article.createdBy.username
+      a(href="/users/"+article.createdBy.id)= article.createdBy.username
     p 
       = "contributors: "
       each contributor, index in article.contributors
         if index
           = ", "
-        a(href="/users/"+contributor.username)= contributor.username
+        a(href="/users/"+contributor.id)= contributor.username
+    p 
+      = "languages: "
+      each language, index in article.languages
+        if index
+          = ", "
+        a(href="/languages/"+language.id)= language.name

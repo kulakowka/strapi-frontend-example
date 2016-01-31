@@ -18,11 +18,11 @@ router.get('/', (req, res, next) => {
   })
 })
 
-// GET /users/:username
-router.get('/:username', 
+// GET /users/:id
+router.get('/:id', 
   (req, res, next) => {
     apiRequest({
-      uri: `/user/${req.params.username}`
+      uri: `/user/${req.params.id}`
     }, (err, response, body) => {
       if (err) return next(err)
       res.locals.user = body

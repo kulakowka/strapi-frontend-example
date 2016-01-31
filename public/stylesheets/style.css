@@ -2,15 +2,25 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
-
+a:hover{
+ text-decoration: underline 
+}
 
 input{
   font-size: 2em;
 }
 button{
   font-size: 2em;
+}
+
+article{
+
+}
+
+article h2 a{
+  color: #222;
 }
