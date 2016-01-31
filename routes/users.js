@@ -5,7 +5,7 @@ const apiRequest = require('../utils/api')
 
 let router = express.Router()
 
-/* GET home page. */
+// GET /users
 router.get('/', (req, res, next) => {
   apiRequest({
     uri: `/user`,
@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
   })
 })
 
-/* GET home page. */
+// GET /users/:id
 router.get('/:id', (req, res, next) => {
   apiRequest({
     uri: `/user/${req.params.id}`,
