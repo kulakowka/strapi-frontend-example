@@ -5,7 +5,13 @@ block title
 
 block content
   h1= article.title
-  = article.content
+  p
+    = "Source: "
+    a(href=article.sourceUrl target="_blank")= article.sourceUrl
+  
+  .content
+    != article.html
+
   .meta
     p 
       = "created by: "

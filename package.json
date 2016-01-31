@@ -13,6 +13,7 @@
     "express": "~4.13.1",
     "express-session": "^1.13.0",
     "jade": "~1.11.0",
+    "marked": "^0.3.5",
     "morgan": "~1.6.1",
     "request": "^2.69.0",
     "serve-favicon": "~2.3.0",

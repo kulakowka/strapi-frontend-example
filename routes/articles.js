@@ -1,5 +1,6 @@
 'use strict'
 
+const marked = require('marked')
 const express = require('express')
 const apiRequest = require('../utils/api')
 
@@ -19,6 +20,7 @@ router.get('/:id', (req, res, next) => {
     }
   }, (err, response, body) => {
     if (err) return next(err)
+    body.html = marked(body.content)
     res.render('articles/show', {article: body})
   })
 })
