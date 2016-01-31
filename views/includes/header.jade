@@ -1,0 +1,19 @@
+header
+  ul
+    li
+      a(href="/") Articles
+    li
+      a(href="/users") Users
+      
+  if currentUser
+    p currentUser: #{currentUser.username}
+    
+    form(action="/auth/logout" method="post") 
+      button(type="submit") logout
+
+  else 
+    ul
+      li
+        a(href="/auth/login") Sign in
+      li
+        a(href="/auth/register") Sign up

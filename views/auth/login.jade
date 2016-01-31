@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1= title
+
+  form(action="/auth/login" method="post")
+    div
+      input(type="text" name="identifier" placeholder="Username or email")
+    div
+      input(type="password" name="password" placeholder="Password")
+    div
+      button(type="submit") Login

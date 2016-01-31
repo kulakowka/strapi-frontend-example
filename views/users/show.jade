@@ -1,0 +1,12 @@
+extends ../layout
+
+block title
+  title= user.username
+
+block content
+  h1= user.username
+  h3 Articles
+  ul
+    each article in user.articles
+      li
+        a(href="/articles/"+article.id)= article.title

@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  h1= title
+
+  each article in articles
+    article
+      h2
+        a(href="/articles/"+article.id)= article.title

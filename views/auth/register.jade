@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1= title
+
+  form(action="/auth/register" method="post")
+    div
+      input(type="text" name="username" placeholder="Username")
+    div
+      input(type="text" name="email" placeholder="Email")
+    div
+      input(type="password" name="password" placeholder="Password")
+    div
+      button(type="submit") Register
