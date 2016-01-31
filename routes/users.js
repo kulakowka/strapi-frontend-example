@@ -18,17 +18,34 @@ router.get('/', (req, res, next) => {
   })
 })
 
-// GET /users/:id
-router.get('/:id', (req, res, next) => {
-  apiRequest({
-    uri: `/user/${req.params.id}`,
-    qs: {
-      populate: 'articles'
-    }
-  }, (err, response, body) => {
-    if (err) return next(err)
-    res.render('users/show', {user: body})
-  })
-})
+// GET /users/:username
+router.get('/:username', 
+  (req, res, next) => {
+    apiRequest({
+      uri: `/user/${req.params.username}`
+    }, (err, response, body) => {
+      if (err) return next(err)
+      res.locals.user = body
+      next()
+    })
+  },
+  (req, res, next) => {
+    apiRequest({
+      uri: `/article`,
+      qs: {
+        where: {
+          createdBy: res.locals.user.id
+        }
+      }
+    }, (err, response, body) => {
+      if (err) return next(err)
+      res.locals.articles = body
+      next()
+    })
+  },
+  (req, res, next) => {
+    res.render('users/show')
+  }
+)
 
 module.exports = router

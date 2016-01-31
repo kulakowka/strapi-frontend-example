@@ -7,6 +7,6 @@ block content
   h1= user.username
   h3 Articles
   ul
-    each article in user.articles
+    each article in articles
       li
         a(href="/articles/"+article.id)= article.title
