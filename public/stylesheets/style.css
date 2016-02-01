@@ -10,11 +10,15 @@ a:hover{
  text-decoration: underline 
 }
 
-input{
-  font-size: 2em;
+form textarea,
+form input,
+form button{
+  font-size: 1.5em;
 }
-button{
-  font-size: 2em;
+form textarea,
+form input{
+  width: 400px;
+  margin: 10px 0;
 }
 
 article{

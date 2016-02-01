@@ -5,26 +5,40 @@ block title
 
 block content
   h1= article.title
-  p
-    = "Source: "
-    a(href=article.sourceUrl target="_blank")= article.sourceUrl
+  if article.sourceUrl
+    p
+      = "Source: "
+      a(href=article.sourceUrl target="_blank")= article.sourceUrl
   
-  .content
-    != article.html
+  if article.html
+    .content
+      != article.html
 
   .meta
     p 
       = "created by: "
       a(href="/users/"+article.createdBy.id)= article.createdBy.username
-    p 
-      = "contributors: "
-      each contributor, index in article.contributors
-        if index
-          = ", "
-        a(href="/users/"+contributor.id)= contributor.username
-    p 
-      = "languages: "
-      each language, index in article.languages
-        if index
-          = ", "
-        a(href="/languages/"+language.id)= language.name
+    
+    if article.contributors.length
+      p 
+        = "contributors: "
+        each contributor, index in article.contributors
+          if index
+            = ", "
+          a(href="/users/"+contributor.id)= contributor.username
+
+    if article.languages.length
+      p 
+        = "languages: "
+        each language, index in article.languages
+          if index
+            = ", "
+          a(href="/languages/"+language.id)= language.name
+
+    if article.platforms.length
+      p 
+        = "platforms: "
+        each platform, index in article.platforms
+          if index
+            = ", "
+          a(href="/platforms/"+platform.id)= platform.name

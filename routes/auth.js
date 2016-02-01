@@ -2,6 +2,7 @@
 
 const express = require('express')
 const apiRequest = require('../utils/api')
+const _ = require('lodash')
 
 let router = express.Router()
 
@@ -15,7 +16,7 @@ router.post('/login', (req, res, next) => {
   apiRequest
   .post('/auth/local', {form: req.body}, (err, response, body) => {
     if (err) return next(err)
-    req.session.user = body.user
+    req.session.user = _.pick(body.user, ['id', 'username', 'email'])
     req.session.jwt = body.jwt
     res.redirect('/')
   })
@@ -31,14 +32,15 @@ router.post('/register', (req, res, next) => {
   apiRequest
   .post('/auth/local/register', {form: req.body}, (err, response, body) => {
     if (err) return next(err)
-    res.json(body)
+    req.session.user = _.pick(body.user, ['id', 'username', 'email'])
+    req.session.jwt = body.jwt
+    res.redirect('/')
   })
 })
 
 // POST /auth/logout
 router.post('/logout', (req, res, next) => {
-  delete req.session.user
-  delete req.session.jwt
+  req.session = null
   res.redirect('/')
 })
 

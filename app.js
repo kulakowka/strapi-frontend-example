@@ -4,19 +4,15 @@ var path = require('path')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+var cookieSession = require('cookie-session')
 
 var app = express()
 
-app.use(session({
-  secret: 'foo',
-  saveUninitialized: false, // don't create session until something stored
-  resave: false,            // don't save session if unmodified
-  store: new MongoStore({
-    url: 'mongodb://localhost/strapi_frontend_v33',
-    touchAfter: 24 * 3600   // time period in seconds
-  })
+app.set('trust proxy', 1) // trust first proxy
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
 }))
 
 // view engine setup

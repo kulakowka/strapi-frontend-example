@@ -1,0 +1,22 @@
+extends ../layout
+
+block title
+  title New article
+block content
+  h1 New article
+  
+  if error
+    p.error= error.message
+
+  form(action="/articles" method="post")
+    div
+      input(type="text" name="title" placeholder="title" value=article.title)
+    div
+      input(type="url" name="sourceUrl" placeholder="source url" value=article.sourceUrl)
+    div
+      textarea(name="content" placeholder="content")=article.content
+    div
+      input(type="url" name="repository" placeholder="repository url")
+      input(type="url" name="repository" placeholder="repository url")
+    div
+      button(type="submit") Create
