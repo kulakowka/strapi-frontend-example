@@ -1,0 +1,13 @@
+extends ../layout
+
+block title
+  title= language.name
+
+block content
+  h1 Articles in #{language.name} language
+  hr
+  include ../articles/includes/list
+
+  
+
+  

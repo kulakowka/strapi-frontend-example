@@ -1,0 +1,12 @@
+extends ../layout
+
+block title
+  title Platforms
+
+block content
+  h1 Platforms
+
+  each platform in platforms
+    .platform
+      h2
+        a(href=`/platforms/${platform.slug}`)= platform.name

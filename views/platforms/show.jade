@@ -1,0 +1,11 @@
+extends ../layout
+
+block title
+  title= platform.name
+
+block content
+  h1 Articles in #{platform.name} platform
+  hr
+  include ../articles/includes/list
+
+  

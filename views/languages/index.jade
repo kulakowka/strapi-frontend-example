@@ -1,0 +1,12 @@
+extends ../layout
+
+block title
+  title Languages
+
+block content
+  h1 Languages
+
+  each language in languages
+    .language
+      h2
+        a(href=`/languages/${language.slug}`)= language.name

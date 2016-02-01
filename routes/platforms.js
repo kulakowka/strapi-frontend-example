@@ -1,31 +1,35 @@
 'use strict'
 
+// Npm packages
 const express = require('express')
+
+// Utils
 const apiRequest = require('../utils/api')
 
+// Policies
+const isAuthorized = require('./policies/isAuthorized')
+
+// Create router instance
 let router = express.Router()
 
-// GET /users
+// GET /platforms
 router.get('/', (req, res, next) => {
   apiRequest({
-    uri: `/user`,
-    qs: {
-      sort: 'createdAt DESC'
-    }
+    uri: `/platform`
   }, (err, response, body) => {
     if (err) return next(err)
-    res.render('users/index', {users: body})
+    res.render('platforms/index', {platforms: body})
   })
 })
 
-// GET /users/:username
-router.get('/:username',
+// GET /platforms/:slug
+router.get('/:slug',
   (req, res, next) => {
     apiRequest({
-      uri: `/user/${req.params.username}`
+      uri: `/platform/${req.params.slug}`
     }, (err, response, body) => {
       if (err) return next(err)
-      res.locals.user = body
+      res.locals.platform = body
       next()
     })
   },
@@ -34,7 +38,7 @@ router.get('/:username',
       uri: `/article`,
       qs: {
         where: {
-          createdBy: res.locals.user.id
+          platforms: res.locals.platform.id
         }
       }
     }, (err, response, body) => {
@@ -44,7 +48,7 @@ router.get('/:username',
     })
   },
   (req, res, next) => {
-    res.render('users/show')
+    res.render('platforms/show')
   }
 )
 

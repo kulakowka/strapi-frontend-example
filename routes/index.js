@@ -14,6 +14,8 @@ router.use((req, res, next) => {
 router.use('/users', require('./users'))
 router.use('/articles', require('./articles'))
 router.use('/auth', require('./auth'))
+router.use('/platforms', require('./platforms'))
+router.use('/languages', require('./languages'))
 
 // GET /
 router.get('/', (req, res, next) => {

@@ -1,22 +1,26 @@
 header
+  .userpanel  
+    if currentUser    
+      p currentUser: #{currentUser.username}
+      form(action="/auth/logout" method="post") 
+        button(type="submit") logout
+      ul
+        li
+          a(href="/articles/new") Create article
+
+    else 
+      ul
+        li
+          a(href="/auth/login") Sign in
+        li
+          a(href="/auth/register") Sign up
   ul
     li
       a(href="/") Articles
     li
+      a(href="/platforms") Platforms
+    li
+      a(href="/languages") Languages
+    li
       a(href="/users") Users
-      
-  if currentUser
-    p currentUser: #{currentUser.username}
-    
-    form(action="/auth/logout" method="post") 
-      button(type="submit") logout
-    ul
-      li
-        a(href="/articles/new") Create article
-
-  else 
-    ul
-      li
-        a(href="/auth/login") Sign in
-      li
-        a(href="/auth/register") Sign up
+  

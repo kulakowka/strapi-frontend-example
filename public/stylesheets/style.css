@@ -9,6 +9,29 @@ a {
 a:hover{
  text-decoration: underline 
 }
+header{
+  background: #eee;
+  overflow: hidden;
+}
+header ul li {
+  display: inline-block;
+  margin: 2px 10px;
+  font-size: 20px;
+  
+}
+header ul li a{
+  color: #333;
+}
+
+header .userpanel {
+  float: right;
+}
+header .userpanel form{
+  display: inline-block;
+}
+header .userpanel button{
+  font-size: 1em;
+}
 
 form textarea,
 form input,
@@ -26,5 +49,5 @@ article{
 }
 
 article h2 a{
-  color: #222;
+  
 }
